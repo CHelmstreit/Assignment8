@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Lab 2 - Calculator III</title>
+    <script src="../../js/jquery-3.1.0.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        //STEP 1
+        $(document).ready(function() {
+            //STEP 2
+            $('input:text').css({
+                'height': '50px',
+                'width': '262px',
+                'margin-right': '5px',
+                'background': 'linear-gradient(#000000, #262626)',
+                'border': '1px solid #FFa500',
+                'border-radius': '5px',
+                'color': '#FFa500',
+                'font-size': '2em',
+                'margin-bottom': '5px',
+                'text-align': 'right'
+            });
+
+            $('input:button').css({
+                'height': '55px',
+                'width': '55px',
+                'background': 'linear-gradient(#FFa500, #ffd27f)',
+                'border': '1px solid #262626',
+                'border-radius': '5px',
+                'margin': '2px',
+                'font-size': '2em',
+                'color': '#000000',
+            });
+
+            $('#equal').css({
+                'width': '262px'
+            });
+
+            $('#container').css({
+                'background': 'linear-gradient(#191919, #262626)',
+                'width': '255px',
+                'border-radius': '5px',
+                'padding-left': '7px'
+            });
+
+            //STEP 3
+            var displayResult = $('#result');
+
+
+
+            $('#container').on('click', function(evt) {
+                var calculateValue = evt.target.value;
+                if (calculateValue !== undefined) {
+                    displayResult.val(displayResult.val() + calculateValue);
+                }
+            });
+
+
+            $('#equal').on('click', function() {
+                var equalButton = displayResult.val();
+                displayResult.val(eval(equalButton));
+            });
+
+
+        });
+
+    </script>
+
+
+</head>
+
+<body>
+    <input type="text" readonly id="result">
+    <br>
+    <div id="container">
+        <input type="button" id="seven" value="7">
+        <input type="button" id="eight" value="8">
+        <input type="button" id="nine" value="9">
+        <input type="button" id="divide" value="/">
+        <br>
+        <input type="button" id="four" value="4">
+        <input type="button" id="five" value="5">
+        <input type="button" id="six" value="6">
+        <input type="button" id="multiply" value="*">
+        <br>
+        <input type="button" id="one" value="1">
+        <input type="button" id="two" value="2">
+        <input type="button" id="three" value="3">
+        <input type="button" id="subtract" value="-">
+        <br>
+        <input type="button" id="zero" value="0">
+        <input type="button" id="period" value=".">
+        <input type="button" id="add" value="+">
+    </div>
+    <input type="button" id="equal" value="=">
+
+</body>
+
+</html>

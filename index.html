@@ -1,0 +1,187 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>jQuery example 01</title>
+
+    <link href="../styles/main.css" type="text/css" rel="stylesheet" />
+
+    <script src="../js/jquery-3.1.0.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //STEP 1
+            $('#buttonOne').click(function() {
+                alert('Button 1 has been clicked.');
+            });
+            //STEP 2
+            $('#buttonTwo').bind('click', function(event) {
+                alert('Button 2 has been clicked.');
+            });
+            //STEP 3
+            $('#buttonThree').on('click', function(event) {
+                alert('Button 3 has been clicked.');
+            });
+            //STEP 4
+            $('#buttonFourA, #buttonFourB').on('click', function(event) {
+                alert('Button 4 has been clicked.');
+            });
+        });
+        //STEP 5
+        $(function() {
+            $('#stepFive')
+                .css('width', '400px')
+                .css('height', '400px')
+                .css('background-color', 'darkgray')
+                .on({
+                    click: function() {
+                        alert('The square has been clicked.');
+                    },
+                    mouseenter: function() {
+                        alert('The mouse has hovered over the square.');
+                    },
+                    mouseleave: function() {
+                        alert('The mouse has hovered away from the square.');
+                    },
+                });
+        });
+
+        //STEP 6
+        /*$(function() {
+            $('#stepFive')
+                .css('width', '400px')
+                .css('height', '400px')
+                .css('background-color', 'darkgray')
+                .on({
+                    click: function() {
+                        $('span').alert('The square has been clicked.');
+                    },
+                    mouseenter: function() {
+                        $('span').alert('The mouse has hovered over the square.');
+                    },
+                    mouseleave: function() {
+                        $('span').alert('The mouse has hovered away from the square.');
+                    },
+                });
+        });*/
+
+        //STEP 7
+        $(function() {
+            $('a').css('color', 'red');
+            $('a').click(function(event) {
+                event.preventDefault();
+            });
+            $('a').click(function(event) {
+                alert(event.target.id);
+            });
+        });
+
+        //STEP 8
+        $(function() {
+            $('#stepEight').css('height', '60px')
+                .css('width', '175px')
+                .css('background-color', 'lightblue');
+        });
+
+        var findWindowSize = function() {
+            var windowHeight = $(window).height(),
+                windowWidth = $(window).width();
+            $('#stepEight').html('Window Dimensions: <br>Height: ' + windowHeight + '<br>Width: ' + windowWidth);
+        };
+        $(document).ready(function() {
+            findWindowSize();
+        });
+        $(window).resize(function() {
+            findWindowSize();
+        });
+
+        //STEP 9
+        $(function() {
+            $('#textBox').focus(function() {
+                $('#textBox').css('background-color', 'lightgray');
+            });
+            $('#textBox').blur(function() {
+                $('#textBox').css('background-color', 'white');
+            });
+        });
+        //STEP 10
+        $('theForm').submit(
+            function(event) {
+                var isValid = true;
+                var namePattern = $('#name').val().trim();
+                var emailPattern = /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}\b/;
+
+                if (namePattern == "") {
+                    alert('Please enter your name.');
+                    isValid = false;
+                } else {
+                    $('#name').val(namePattern);
+                    $('#name').next().text('');
+                }
+
+                if (emailPattern == "") {
+                    alert('Please enter a valid email address.');
+                    isValid = false;
+                } else if (!emailPattern.test(email)) {
+                    alert('The email address you provided is not valid.');
+                    isValid = false;
+                } else {
+                    $('#email').next().text("");
+                }
+                if (isValid == false) {
+                    event.preventDefault();
+                }
+            });
+
+    </script>
+
+</head>
+
+<body>
+
+    <!--STEPS 1-3-->
+    <input type="button" id="buttonOne" value="BUTTON 1" />
+    <br>
+    <input type="button" id="buttonTwo" value="BUTTON 2" />
+    <br>
+    <input type="button" id="buttonThree" value="BUTTON 3" />
+    <br>
+    <!--STEP 4-->
+    <input type="button" id="buttonFourA" value="BUTTON 4a" />
+    <input type="button" id="buttonFourB" value="BUTTON 4b" />
+    <br>
+    <!--STEPS 5 & 6-->
+    <div id="stepFive">
+        <h1>The Square</h1>
+    </div>
+    <!--STEP 7-->
+    <div id="stepSeven">
+        <a href="http://www.google.com" id="redirect">Visit Google</a>
+    </div>
+    <!--STEP 8-->
+    <div id="stepEight">
+        <p>Window Dimensions:</p>
+    </div>
+    <!--STEP 9-->
+    <div id="stepNine">
+        <p>Text Box:</p>
+        <input type="text" id="textBox">
+    </div>
+    <!--STEP 10-->
+    <form id="theForm" name="theForm" action="#">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" required>
+        <br>
+        <input type="submit" id="submit" value="Submit">
+    </form>
+
+
+
+</body>
+
+</html>
