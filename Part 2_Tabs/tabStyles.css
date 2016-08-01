@@ -1,0 +1,53 @@
+html {
+    font-family: 'Muli', sans-serif;
+}
+body {
+    width: 960px;
+    margin: 0 auto;
+    background-color: darkgray;
+}
+#tabs {
+    width: 100%;
+    display: inline-block;
+}
+#links:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+#links li {
+    margin: 0px 5px -15px;
+    float: left;
+    list-style: none;
+}
+#links a {
+    padding: 9px 15px;
+    display: inline-block;
+    border-radius: 5px 5px 0px 0px;
+    background: #7FB5DA;
+    box-shadow: -1px 1px 1px black;
+    font-size: 16px;
+    font-weight: 600;
+    color: #4c4c4c;
+}
+#links a:hover {
+    background: #a7cce5;
+    text-decoration: none;
+}
+li.active a,
+li.active a:hover {
+    background: #fff;
+    color: #4c4c4c;
+}
+.tabPages {
+    padding: 15px;
+    border-radius: 3px;
+    box-shadow: -1px 1px 1px black;
+    background: #fff;
+}
+.tab {
+    display: none;
+}
+.tab.active {
+    display: block;
+}
